@@ -1,23 +1,23 @@
 async function bubble() {
-    console.log('In bubble()');
-    const ele = document.querySelectorAll(".bar");
-    for(let i = 0; i < ele.length-1; i++){
+    console.log('bubble sort');
+    const arr = document.querySelectorAll(".bar");
+    for(let i = 0; i < arr.length-1; i++){
         console.log('In ith loop');
-        for(let j = 0; j < ele.length-i-1; j++){
+        for(let j = 0; j < arr.length-i-1; j++){
             console.log('In jth loop');
-            ele[j].style.background = 'crimson';
-            ele[j+1].style.background = 'crimson';
-            if(parseInt(ele[j].style.height) > parseInt(ele[j+1].style.height)){
+            arr[j].style.background = 'crimson';
+            arr[j+1].style.background = 'crimson';
+            if(parseInt(arr[j].style.height) > parseInt(arr[j+1].style.height)){
                 console.log('In if condition');
                 await waitforme(delay);
-                swap(ele[j], ele[j+1]);
+                swap(arr[j], arr[j+1]);
             }
-            ele[j].style.background = 'pink';
-            ele[j+1].style.background = 'pink';
+            arr[j].style.background = 'pink';
+            arr[j+1].style.background = 'pink';
         }
-        ele[ele.length-1-i].style.background = 'purple';
+        arr[arr.length-1-i].style.background = 'purple';
     }
-    ele[0].style.background = 'purple';
+    arr[0].style.background = 'purple';
 }
 
 const bubSortbtn = document.querySelector(".bubbleSort");

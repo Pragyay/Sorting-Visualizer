@@ -70,7 +70,7 @@ let delayElement = document.querySelector('#array_speed');
 // Event listener to update delay time 
 delayElement.addEventListener('input', function(){
     console.log(delayElement.value, typeof(delayElement.value));
-    delay = 320 - parseInt(delayElement.value);
+    delay = 500 - parseInt(delayElement.value);
 });
 
 // Creating array to store randomly generated numbers
