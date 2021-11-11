@@ -12,6 +12,9 @@ async function merge(arr,left,right,mid){
     let right_arr = new Array(right_arr_length);
 
     for(let i=0;i<left_arr.length;i++){
+
+        arr[left+i].style.background = "crimson";
+
         await waitforme(delay);
         left_arr[i] = arr[left+i].style.height;
     }
@@ -19,6 +22,9 @@ async function merge(arr,left,right,mid){
     console.log("added elements to left_arr");
      
     for(let i=0;i<right_arr.length;i++){
+
+        arr[mid+1+i].style.background = "crimson";
+
         await waitforme(delay);
         right_arr[i] = arr[mid+1+i].style.height;
     }
@@ -35,22 +41,31 @@ async function merge(arr,left,right,mid){
         // console.log(typeof(left_arr[i]));  
 
         // use parseInt to convert string to int (left_arr[i] is of type string)
-        if(parseInt(left_arr[i])<parseInt(right_arr[j])){              
+        if(parseInt(left_arr[i])<parseInt(right_arr[j])){  
+            
+            arr[k].style.background = "purple";
+            
             arr[k].style.height = left_arr[i];
             i++;
         }else{
+
+            arr[k].style.background = "purple";
+
             arr[k].style.height = right_arr[j];
             j++;
         }
         k++;
     }
 
-    console.log("sorted elements");
-    for(let x=left;x<=k;x++){
-        console.log(arr[x].style.height);
-    }
+    // console.log("sorted elements");
+    // for(let x=left;x<=k;x++){
+    //     console.log(arr[x].style.height);
+    // }
 
     while(i<left_arr_length){
+
+        arr[k].style.background = "purple";
+
         await waitforme(delay);
         arr[k].style.height = left_arr[i];
         i++;
@@ -58,10 +73,17 @@ async function merge(arr,left,right,mid){
     }
 
     while(j<right_arr_length){
+
+        arr[k].style.background = "purple";
+
         await waitforme(delay);
         arr[k].style.height = right_arr[j];
         j++;
         k++;
+    }
+
+    for(let x=0;x<k;x++){
+        arr[x].style.background = "pink";
     }
 
     console.log("sorted remaining elements");
@@ -81,6 +103,12 @@ async function mergeSort(arr,left,right){
     await merge(arr,left,right,mid);
 }
 
+async function changeColorSorted(arr){
+    for(let i=0;i<arr.length;i++){
+        arr[i].style.background = "purple";
+    }
+}
+
 const mergeSortbtn = document.querySelector(".mergeSort");
 mergeSortbtn.addEventListener('click', async function(){
     let arr = document.querySelectorAll(".bar");
@@ -90,6 +118,7 @@ mergeSortbtn.addEventListener('click', async function(){
     disableSizeSlider();
     disableNewArrayBtn();
     await mergeSort(arr,left,right);
+    changeColorSorted(arr);
     enableSortingBtn();
     enableSizeSlider();
     enableNewArrayBtn();
