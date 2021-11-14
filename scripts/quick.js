@@ -21,8 +21,8 @@ async function quick(arr, low, high){
         await(waitforme(delay));
         arr[start].style.background = "crimson";
 
-        while(parseInt(arr[start].style.height) < parseInt(pivot)){
-
+        while(parseInt(arr[start].style.height) < parseInt(pivot))
+        {
             arr[start].style.background = "pink";
 
             start++;
@@ -31,16 +31,16 @@ async function quick(arr, low, high){
         await(waitforme(delay));
         arr[end].style.background = "blue";
 
-        while(parseInt(arr[end].style.height) > parseInt(pivot)){
-
+        while(parseInt(arr[end].style.height) > parseInt(pivot))
+        {
             arr[end].style.background = "pink";
 
             end--;
         }
 
 
-        if(start<=end){
-
+        if(start<=end)
+        {
             await(waitforme(delay));
 
             swap(arr[start], arr[end]);
@@ -57,12 +57,14 @@ async function quick(arr, low, high){
 
     await quick(arr, low, end);
 
+    // change color of sorted divs to purple
     for(let i=low;i<=end;i++){
         arr[i].style.background = "purple";
     }
     
-    await quick(arr, start, high);
+    await quick(arr, start, high);  
 
+    //chnage color of sorted divs to purple
     for(let i=start;i<=high;i++){
         arr[i].style.background = "purple";
     }
@@ -71,13 +73,9 @@ async function quick(arr, low, high){
 const quickSortbtn = document.querySelector(".quickSort");
 quickSortbtn.addEventListener('click', async function(){
     const arr = document.querySelectorAll(".bar");
-    disableSortingBtn();
-    disableSizeSlider();
-    disableNewArrayBtn();
+    disable();
     await quick(arr, 0, arr.length-1);
-    enableSortingBtn();
-    enableSizeSlider();
-    enableNewArrayBtn();
+    enable();
 });
 
 
