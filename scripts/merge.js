@@ -12,20 +12,20 @@ async function merge(arr,left,right,mid){
     let right_arr = new Array(right_arr_length);
 
     for(let i=0;i<left_arr.length;i++){
+        await waitforme(delay);
 
         arr[left+i].style.background = "crimson";
 
-        await waitforme(delay);
         left_arr[i] = arr[left+i].style.height;
     }
 
     // console.log("added elements to left_arr");
      
     for(let i=0;i<right_arr.length;i++){
+        await waitforme(delay);
 
         arr[mid+1+i].style.background = "crimson";
 
-        await waitforme(delay);
         right_arr[i] = arr[mid+1+i].style.height;
     }
 
@@ -43,13 +43,13 @@ async function merge(arr,left,right,mid){
         // use parseInt to convert string to int (left_arr[i] is of type string)
         if(parseInt(left_arr[i])<parseInt(right_arr[j])){  
             
-            arr[k].style.background = "purple";
+            arr[k].style.background = "#E65C9C";
             
             arr[k].style.height = left_arr[i];
             i++;
         }else{
 
-            arr[k].style.background = "purple";
+            arr[k].style.background = "#E65C9C";
 
             arr[k].style.height = right_arr[j];
             j++;
@@ -63,27 +63,27 @@ async function merge(arr,left,right,mid){
     // }
 
     while(i<left_arr_length){
-
-        arr[k].style.background = "purple";
-
         await waitforme(delay);
+
+        arr[k].style.background = "#E65C9C";
+
         arr[k].style.height = left_arr[i];
         i++;
         k++;
     }
 
     while(j<right_arr_length){
-
-        arr[k].style.background = "purple";
-
         await waitforme(delay);
+
+        arr[k].style.background = "#E65C9C";
+
         arr[k].style.height = right_arr[j];
         j++;
         k++;
     }
 
     for(let x=0;x<k;x++){
-        arr[x].style.background = "pink";
+        arr[x].style.background = "#FB8CAB";
     }
 
     // console.log("sorted remaining elements");
@@ -106,10 +106,10 @@ async function mergeSort(arr,left,right){
     await merge(arr,left,right,mid);
 }
 
-//chnage color of sorted divs to purple
+//chnage color of sorted divs to #E65C9C
 async function changeColorSorted(arr){
     for(let i=0;i<arr.length;i++){
-        arr[i].style.background = "purple";
+        arr[i].style.background = "#E65C9C";
     }
 }
 
@@ -118,8 +118,13 @@ mergeSortbtn.addEventListener('click', async function(){
     let arr = document.querySelectorAll(".bar");
     let left = 0;
     let right = arr.length-1; 
+
     disable();
+    mergeSortbtn.style.background = "rgba(0, 0, 0, 0.5)";
+
     await mergeSort(arr,left,right);
     changeColorSorted(arr);
+    
     enable();
+    mergeSortbtn.style.background = "rgba(0, 0, 0, 0.0)";
 });

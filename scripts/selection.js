@@ -16,28 +16,33 @@ async function selection(){
             {
                 // console.log('in if cond');
                 await waitforme(delay);
-                arr[min_index].style.background = 'pink';
+                arr[min_index].style.background = ' #FB8CAB';
                 min_index = j;
                 arr[min_index].style.background = 'crimson';
             }
             else{
                 await waitforme(delay);
-                arr[j].style.background = "pink";
+                arr[j].style.background = " #FB8CAB";
             }
         }
 
         swap(arr[min_index],arr[i]);
 
-        arr[min_index].style.background = "pink";
-        arr[i].style.background = "purple";
+        arr[min_index].style.background = " #FB8CAB";
+        arr[i].style.background = "#E65C9C";
     }
     
-    arr[arr.length-1].style.background = "purple";
+    arr[arr.length-1].style.background = "#E65C9C";
 }
 
 const selectionSortBtn = document.querySelector('.selectionSort');
 selectionSortBtn.addEventListener('click',async function(){
     disable();
+    selectionSortbtn.style.background = "rgba(0, 0, 0, 0.5)";
+
     await selection();
+    
     enable();
+    selectionSortbtn.style.background = "rgba(0, 0, 0, 0)";
+
 })

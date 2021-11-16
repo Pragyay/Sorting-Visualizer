@@ -5,12 +5,8 @@ async function bubble() {
     const arr = document.querySelectorAll(".bar");
     for(let i = 0; i < arr.length-1; i++)
     {
-        // console.log('In ith loop');
-
         for(let j = 0; j < arr.length-i-1; j++)
         {
-            // console.log('In jth loop');
-
             arr[j].style.background = 'crimson';
             arr[j+1].style.background = 'crimson';
 
@@ -21,19 +17,23 @@ async function bubble() {
                 swap(arr[j], arr[j+1]);
             }
 
-            arr[j].style.background = 'pink';
-            arr[j+1].style.background = 'pink';
+            arr[j].style.background = '#FB8CAB';
+            arr[j+1].style.background = '#FB8CAB';
         }
 
-        arr[arr.length-1-i].style.background = 'purple';
+        arr[arr.length-1-i].style.background = '#E65C9C';
     }
-    
-    arr[0].style.background = 'purple';
+
+    arr[0].style.background = '#E65C9C';
 }
 
-const bubSortbtn = document.querySelector(".bubbleSort");
-bubSortbtn.addEventListener('click', async function(){
+const bubbleSortbtn = document.querySelector(".bubbleSort");
+bubbleSortbtn.addEventListener('click', async function(){
     disable();
+    bubbleSortbtn.style.background = "rgba(0, 0, 0, 0.5)";
+
     await bubble();
+    
     enable();
+    bubbleSortbtn.style.background = "rgba(0, 0, 0, 0.0)";
 });

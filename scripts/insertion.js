@@ -44,7 +44,12 @@ async function insertion(){
 const insertionSortbtn = document.querySelector(".insertionSort");
 insertionSortbtn.addEventListener('click', async function(){
     disable();
+    insertionSortbtn.style.background = "rgba(0, 0, 0, 0.5)";
+
     await insertion();
+
     enable();
+    insertionSortbtn.style.background = "rgba(0, 0, 0, 0)";
+
 });
 

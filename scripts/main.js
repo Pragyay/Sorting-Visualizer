@@ -54,7 +54,7 @@ let delayElement = document.querySelector('#array_speed');
 // Event listener to update delay time 
 delayElement.addEventListener('input', function(){
     // console.log(delayElement.value, typeof(delayElement.value));
-    delay = 350 - parseInt(delayElement.value);
+    delay = 300 - parseInt(delayElement.value);
 });
 
 // Creating array to store randomly generated numbers which will be our height
@@ -89,6 +89,9 @@ function createNewArray(noOfBars = 60) {
 
         //position divs to bottom of array_container
         bar.style.marginTop = "auto";
+
+        //to update height of divs smoothly while sorting
+        bar.style.transition = "height 0.3s";
 
         //add bar and flex-item classes to div
         bar.classList.add('bar');
