@@ -38,11 +38,11 @@ async function selection(){
 const selectionSortBtn = document.querySelector('.selectionSort');
 selectionSortBtn.addEventListener('click',async function(){
     disable();
-    selectionSortbtn.style.background = "rgba(0, 0, 0, 0.5)";
+    selectionSortBtn.style.background = "rgba(0, 0, 0, 0.5)";
 
     await selection();
     
     enable();
-    selectionSortbtn.style.background = "rgba(0, 0, 0, 0)";
+    selectionSortBtn.style.background = "rgba(0, 0, 0, 0)";
 
 })

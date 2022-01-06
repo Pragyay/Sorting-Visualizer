@@ -32,7 +32,7 @@ function enable(){
 function waitforme(milisec) { 
     return new Promise(resolve => { 
         setTimeout(() => { resolve('') }, milisec); 
-    }) 
+    })  
 }
 
 // Selecting size slider from DOM
